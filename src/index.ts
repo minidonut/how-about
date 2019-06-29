@@ -1,1 +1,1 @@
-console.log("create-awesome-app");
+console.log("how-about");
