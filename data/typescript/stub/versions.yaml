@@ -1,8 +1,2 @@
-info:
-  This configuration is for general typescript coding. with tools such as nodemon, tslint included
-default:
-    simple
-version:
-  simple:
-    basic configuration  
-    
+info: This configuration is for general typescript coding. with tools such as nodemon, tslint included
+default: simple

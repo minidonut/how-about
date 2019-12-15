@@ -1,0 +1,12 @@
+description: basic configuration
+command:
+  pre: []
+  post: []
+root:
+  src: ["v1"]
+  package.json: ["v1"]
+  tsconfig.json: ["v1"]
+  .editorconfig: ["v1"]
+  tslint.json: ["v1"]
+  .gitignore: ["v1"]
+  README.md: ["v1"]
