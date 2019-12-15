@@ -1,14 +1,19 @@
 import * as program from "commander";
-import main from "./main";
+import { command } from "./modules/command";
 const version = require("../package.json").version;
 
-program.version(version, "-v, --version");
-
 program
-  .arguments("<target> [type]")
-  .option("-v, --version", "Copy sprint key to system clipboard")
-  .option("-b, --describe", "Checkout git branch of issue-key at current directory")
-  .description("Add a issue into current sprint")
-  .action(main);
+  .arguments("<type> [target]")
+  .option("-v, --version <version>", "select version of scaffolded project")
+  .option("-d, --describe", "show information of selected project")
+  .description("Scaffold a project with selected configurations")
+  .action(command);
+
+program.on("--help", function() {
+  console.log("\n");
+  console.log(`Hbout cli - version ${version}`);
+  console.log("\n");
+  console.log("\n");
+});
 
 program.parse(process.argv);
