@@ -1,11 +1,7 @@
 # How About
 
-How-About is javascript/typescript universal scaffolder with no build configuration.
-
-- [Creating an App](#creating-an-app) – How to create a new app.
-- [User Guide]
-
-How-About works on macOS, Windows, and Linux.<br>
+How-About is universal scaffolder.
+How-About works on macOS
 
 ## Quick Overview
 
@@ -17,71 +13,53 @@ npm start
 
 ### Get Started Immediately
 
-## Creating an App
-
-### npx
-
-### npm
-
-_`npm init <initializer>` is available in npm 6+_
-
-### Yarn
-
-```sh
-yarn how-about my-app
+### With package manager
+``` shell
+yarn add global @minidonut/init-cli
+npm install -g @minidonut/init-cli
 ```
 
-_`yarn create` is available in Yarn 0.25+_
-
-It will create a directory called `my-app` inside the current folder.<br>
-Inside that directory, it will generate the initial project structure and install the transitive dependencies:
-
-```
-my-app
-├── README.md
-├── node_modules
-├── package.json
-├── .gitignore
-└── src
+### With github
+``` shell
+git clone https://github.com/minidonut/init-cli && cd init-cli
+yarn install
+yarn build
+yarn link
 ```
 
-No configuration or complicated folder structures, just the files you need to build your app.<br>
-Once the installation is done, you can open your project folder:
+## Usage
+``` shell
+init <type> <target> [options]
 
-```sh
-cd my-app
+init --help
+
+init append .editorconfig
+init append tslint.json
+init append circleci
+init append npm
+init append readme
+
+init typescript cli
+init typescript stub
+init typescript package
+init typescript server
+init typescript aws-lambda
+init typescript react
+init typescript ui-module
+init typescript nextjs
+
+init go      ...  ##TBD
+init haskell ...  ##TBD
+init python  ...  ##TBD
+
+init typescript cli --version=default
+init typescript cli --describe
 ```
-
-Inside the newly created project, you can run some built-in commands:
-
-### `npm start` or `yarn start`
-
-
-### `npm test` or `yarn test`
-
-
-### `npm run build` or `yarn build`
-
-
-## User Guide
-
-
-## How to Update to New Versions?
-
-
-## Philosophy
-
-
-## What’s Included?
-
-
-## Popular Alternatives
 
 
 ## Contributing
 
 We'd love to have your helping hand on `how-about`! See [CONTRIBUTING.md](CONTRIBUTING.md) for more information on what we're looking for and how to get started.
-
 
 ## Acknowledgements
 
