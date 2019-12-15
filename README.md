@@ -15,13 +15,13 @@ npm start
 
 ### With package manager
 ``` shell
-yarn add global @minidonut/init-cli
-npm install -g @minidonut/init-cli
+yarn add global how-about
+npm install -g how-about
 ```
 
 ### With github
 ``` shell
-git clone https://github.com/minidonut/init-cli && cd init-cli
+git clone https://github.com/minidonut/how-about && cd how-about
 yarn install
 yarn build
 yarn link
@@ -29,31 +29,31 @@ yarn link
 
 ## Usage
 ``` shell
-init <type> <target> [options]
+hbout <type> <target> [options]
 
-init --help
+hbout --help
 
-init append .editorconfig
-init append tslint.json
-init append circleci
-init append npm
-init append readme
+hbout append .editorconfig
+hbout append tslint.json
+hbout append circleci
+hbout append npm
+hbout append readme
 
-init typescript cli
-init typescript stub
-init typescript package
-init typescript server
-init typescript aws-lambda
-init typescript react
-init typescript ui-module
-init typescript nextjs
+hbout typescript cli
+hbout typescript stub
+hbout typescript package
+hbout typescript server
+hbout typescript aws-lambda
+hbout typescript react
+hbout typescript ui-module
+hbout typescript nextjs
 
-init go      ...  ##TBD
-init haskell ...  ##TBD
-init python  ...  ##TBD
+hbout go      ...  ##TBD
+hbout haskell ...  ##TBD
+hbout python  ...  ##TBD
 
-init typescript cli --version=default
-init typescript cli --describe
+hbout typescript cli --version=default
+hbout typescript cli --describe
 ```
 
 
