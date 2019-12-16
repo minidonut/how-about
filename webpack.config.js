@@ -28,5 +28,8 @@ module.exports = {
   externals: [ nodeExternals() ],
   plugins: [
     new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
-  ]
+  ],
+  node: {
+    __dirname: false,
+  },
 }
