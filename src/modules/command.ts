@@ -1,19 +1,19 @@
 import { describeVersion } from "./describe";
-import { Context } from "../modules/Context";
+import { Context } from "./Context";
+import { generate } from "./generate";
 
 
-export const command = (type: string, target: string, { describe, version }: any) => {
+export const command = (type: string, target: string, { describe, version }: any): void => {
   const ctx = new Context(
     type,
     target,
     !!describe,
     typeof version === "string" ? version : undefined,
-  );
-  ctx.load();
+  ).load();
 
   if (describe) {
     describeVersion(ctx);
+  } else {
+    generate(ctx);
   }
-
-  console.log(type, target, describe, typeof version);
 };

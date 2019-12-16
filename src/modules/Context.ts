@@ -22,12 +22,13 @@ export class Context {
     cwd: string;
     root: string;
     tree: any;
+    targetTree: DirTree;
   };
   template: {
     struct: any;
     config: any;
-    target: any;
-  }
+    target: DirTree;
+  };
 
 
   constructor(type: string, target: string, describe: boolean, version: string) {
@@ -37,7 +38,12 @@ export class Context {
       type,
       version,
     };
-    this.env.cwd = process.cwd();
+    this.env = {
+      cwd: process.cwd(),
+      root: undefined,
+      tree: undefined,
+      targetTree: undefined,
+    };
   }
 
   load() {
@@ -52,7 +58,7 @@ export class Context {
       console.error(`invalid <type> arguments provided.
 choose one of\n
 ${tree.children.filter(x => x.type === "directory").map(x => "- " + x.name).join("\n")}\n
-given: ${this.type}\n`);
+given: ${this.args.type}\n`);
       process.exit(1);
     }
 
@@ -85,7 +91,7 @@ given: ${this.args.target}\n`);
       console.error(`invalid [version] optional arguments provided.
 choose one of\n
 ${targetTree.children.filter(x => x.type === "directory").map(x => "- " + x.name).join("\n")}\n
-given: ${this.version}\n`);
+given: ${this.args.version}\n`);
       process.exit(1);
     }
 
@@ -102,13 +108,14 @@ given: ${this.version}\n`);
       ...this.env,
       root,
       tree,
+      targetTree,
     };
 
     this.template = {
       config: generalConfigs,
       struct: templateStructure,
       target: versionTree,
-    }
+    };
 
     return this;
   }
