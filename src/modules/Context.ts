@@ -12,20 +12,32 @@ interface DirTree {
 }
 
 export class Context {
-  type: string;
-  target: string;
-  describe: boolean;
-  version: string;
-  cwd: string;
-  root: string;
-  tree: any;
+  args: {
+    type: string;
+    target: string;
+    describe: boolean;
+    version: string;
+  };
+  env: {
+    cwd: string;
+    root: string;
+    tree: any;
+  };
+  template: {
+    struct: any;
+    config: any;
+    target: any;
+  }
+
 
   constructor(type: string, target: string, describe: boolean, version: string) {
-    this.type = type;
-    this.target = target;
-    this.describe = describe;
-    this.version = version;
-    this.cwd = process.cwd();
+    this.args = {
+      describe,
+      target,
+      type,
+      version,
+    };
+    this.env.cwd = process.cwd();
   }
 
   load() {
@@ -35,7 +47,7 @@ export class Context {
     // Check type
     const typeTree = tree.children
       .filter(x => x.type === "directory" && x.name[0] !== "_")
-      .find(x => x.name === this.type);
+      .find(x => x.name === this.args.type);
     if (!typeTree) {
       console.error(`invalid <type> arguments provided.
 choose one of\n
@@ -47,12 +59,12 @@ given: ${this.type}\n`);
     // Check target
     const targetTree = typeTree.children
       .filter(x => x.type === "directory" && x.name[0] !== "_")
-      .find(x => x.name === this.target);
+      .find(x => x.name === this.args.target);
     if (!targetTree) {
       console.error(`invalid <target> arguments provided.
 choose one of\n
 ${typeTree.children.filter(x => x.type === "directory").map(x => "- " + x.name).join("\n")}\n
-given: ${this.target}\n`);
+given: ${this.args.target}\n`);
       process.exit(1);
     }
 
@@ -68,8 +80,8 @@ given: ${this.target}\n`);
     // Check version
     const versionTree = targetTree.children
       .filter(x => x.type === "directory" && x.name[0] !== "_")
-      .find(x => (this.version ?? generalConfigs.default) == x.name);
-    if (!versionTree && this.version !== "default") {
+      .find(x => (this.args.version ?? generalConfigs.default) == x.name);
+    if (!versionTree && this.args.version !== "default") {
       console.error(`invalid [version] optional arguments provided.
 choose one of\n
 ${targetTree.children.filter(x => x.type === "directory").map(x => "- " + x.name).join("\n")}\n
@@ -85,6 +97,18 @@ given: ${this.version}\n`);
           .find(x => /^struct.yaml$/.test(x.name)).path,
         "utf-8")
     );
+
+    this.env = {
+      ...this.env,
+      root,
+      tree,
+    };
+
+    this.template = {
+      config: generalConfigs,
+      struct: templateStructure,
+      target: versionTree,
+    }
 
     return this;
   }
