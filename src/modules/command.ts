@@ -7,7 +7,7 @@ export const command = (type: string, target: string, { describe, version }: any
     type,
     target,
     !!describe,
-    typeof version === "string" ? version : "default",
+    typeof version === "string" ? version : undefined,
   );
   ctx.load();
 

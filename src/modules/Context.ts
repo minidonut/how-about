@@ -1,4 +1,6 @@
 import * as  path from "path";
+import * as YAML from "yaml";
+import * as fs from "fs";
 const dirTree = require("directory-tree");
 
 interface DirTree {
@@ -54,10 +56,19 @@ given: ${this.target}\n`);
       process.exit(1);
     }
 
+    // Load configurations
+    const generalConfigs = YAML.parse(
+      fs.readFileSync(
+        targetTree
+          .children
+          .find(x => /^config.yaml$/.test(x.name)).path,
+        "utf-8")
+    );
+
     // Check version
     const versionTree = targetTree.children
       .filter(x => x.type === "directory" && x.name[0] !== "_")
-      .find(x => x.name === this.version);
+      .find(x => (this.version ?? generalConfigs.default) == x.name);
     if (!versionTree && this.version !== "default") {
       console.error(`invalid [version] optional arguments provided.
 choose one of\n
@@ -66,6 +77,14 @@ given: ${this.version}\n`);
       process.exit(1);
     }
 
+    // Load template structure
+    const templateStructure = YAML.parse(
+      fs.readFileSync(
+        versionTree
+          .children
+          .find(x => /^struct.yaml$/.test(x.name)).path,
+        "utf-8")
+    );
 
     return this;
   }
