@@ -22,8 +22,7 @@ export const generate = async (ctx: Context) => {
       validate: (projectName: string) => projectName.length > 3,
     });
 
-    const projectPath = path.join(process.cwd(), projectName);
-    console.log(projectPath);
+    const projectPath = path.join(ctx.env.cwd, projectName);
     process.chdir(ctx.env.cwd);
 
     if (ctx.args.target === "cra") {

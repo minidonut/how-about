@@ -16,7 +16,12 @@ export const findFileFromTargetTree = (name: string, ctx: Context, nullable?: bo
 export const findFileFromCustomTree = (name: string, path: string, version?: string) => {
   const tree: DirTree = dirTree(path);
   if (version) {
-    const fromVersion = tree.children.find(x => x.type === "directory" && x.name === version);
+    const fromVersion = tree
+      .children
+      .find(x => x.type === "directory" && x.name === version)
+      ?.children
+      .find(x => x.name === name);
+
     if (!fromVersion) throw new Error(`ENOENT. cannot find version '${version}' of '${name}'`);
     return fromVersion;
   } else {
