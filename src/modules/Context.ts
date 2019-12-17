@@ -23,6 +23,8 @@ export class Context {
     root: string;
     tree: any;
     targetTree: DirTree;
+    projectName: string;
+    projectPath: string;
   };
   template: {
     struct: any;
@@ -43,6 +45,8 @@ export class Context {
       root: undefined,
       tree: undefined,
       targetTree: undefined,
+      projectName: undefined,
+      projectPath: undefined,
     };
   }
 
