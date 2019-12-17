@@ -3,7 +3,7 @@ import * as YAML from "yaml";
 import * as fs from "fs";
 const dirTree = require("directory-tree");
 
-interface DirTree {
+export interface DirTree {
   path: string;
   name: string;
   size: number;
@@ -21,15 +21,15 @@ export class Context {
   env: {
     cwd: string;
     root: string;
-    tree: any;
+    tree: DirTree;
     targetTree: DirTree;
+    versionTree: DirTree;
     projectName: string;
     projectPath: string;
   };
   template: {
     struct: any;
     config: any;
-    target: DirTree;
   };
 
 
@@ -45,6 +45,7 @@ export class Context {
       root: undefined,
       tree: undefined,
       targetTree: undefined,
+      versionTree: undefined,
       projectName: undefined,
       projectPath: undefined,
     };
@@ -113,12 +114,12 @@ given: ${this.args.version}\n`);
       root,
       tree,
       targetTree,
+      versionTree,
     };
 
     this.template = {
       config: generalConfigs,
       struct: templateStructure,
-      target: versionTree,
     };
 
     return this;

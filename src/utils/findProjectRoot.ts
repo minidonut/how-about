@@ -1,4 +1,3 @@
-import { Context } from "../modules/Context";
 import * as fs from "fs";
 
 export const getParentPath = (path: string) => {
@@ -9,7 +8,7 @@ export const getParentPath = (path: string) => {
   return path.split("/").slice(0, -1).join("/");
 };
 
-export const findProjectRoot = (ctx: Context) => {
+export const findProjectRoot = () => {
   console.log("find project root..");
 
   const homedir = require("os").homedir();
@@ -31,5 +30,5 @@ export const findProjectRoot = (ctx: Context) => {
     }
   };
 
-  return findRoot(ctx.env.cwd);
+  return findRoot(process.cwd());
 };

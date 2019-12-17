@@ -12,7 +12,7 @@ export const generate = async (ctx: Context) => {
 
   // directory creation
   if (ctx.args.type === "append") {
-    const projectPath = findProjectRoot(ctx);
+    const projectPath = findProjectRoot();
     ctx.env.projectPath = projectPath;
     ctx.env.projectName = projectPath.split("/").slice(-1)[0];
   } else {
@@ -22,7 +22,8 @@ export const generate = async (ctx: Context) => {
       validate: (projectName: string) => projectName.length > 3,
     });
 
-    const projectPath = path.join(ctx.env.cwd, projectName);
+    const projectPath = path.join(process.cwd(), projectName);
+    console.log(projectPath);
     process.chdir(ctx.env.cwd);
 
     if (ctx.args.target === "cra") {
@@ -36,7 +37,7 @@ export const generate = async (ctx: Context) => {
     ctx.env.projectPath = projectPath;
   }
 
-  // TOOD pre, post command 실행
+  // TOOD pre, post command
   const listToGenerate: [string, string[]][] = Object.entries(ctx.template.struct.root);
 
   listToGenerate.forEach(([fn, [varient, ...args]]) => {
