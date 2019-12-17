@@ -1,0 +1,6 @@
+description: editorconfig with 4 space
+command:
+  pre: []
+  post: []
+root:
+  .editorconfig: ["v1"]
