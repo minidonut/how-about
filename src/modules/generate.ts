@@ -39,7 +39,9 @@ export const generate = async (ctx: Context) => {
   // TOOD pre, post command
   const listToGenerate: [string, string[]][] = Object.entries(ctx.template.struct.root);
 
-  listToGenerate.forEach(([fn, [varient, ...args]]) => {
-    (generators as any)[fn][varient](ctx, ...args);
-  });
+  for (const genFns of listToGenerate) {
+    const [fn, [varient, ...args]] = genFns;
+    await (generators as any)[fn][varient](ctx, ...args);
+  }
+
 };
