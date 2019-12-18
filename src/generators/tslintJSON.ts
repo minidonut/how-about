@@ -1,9 +1,5 @@
-import { GenFn } from "./types";
-
-const v1: GenFn = (ctx, ...args) => {
-  console.log("generate tslint.json");
-};
+import { justSingleFile } from "./common/generators";
 
 export default {
-  v1,
+  v1: justSingleFile("tslint.json"),
 };
