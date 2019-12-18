@@ -10,3 +10,7 @@ root:
   tslint.json: ["v1"]
   .gitignore: ["v1", "typescript-node"]
   README.md: ["v1"]
+  CODE_OF_CONDUCT.md: ["v1"]
+  LICENSE: ["v1", "MIT"]
+  CONTRIBUTING.md: ["v1"]
+  CHANGELOG.md: ["v1"]

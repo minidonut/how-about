@@ -1,0 +1,4 @@
+info: add CODE_OF_CONDUCT.md file
+default: MIT
+arguments:
+  -

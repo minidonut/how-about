@@ -1,0 +1,6 @@
+description: basic configuration
+command:
+  pre: []
+  post: []
+root:
+  CODE_OF_CONDUCT.md: ["v1"]
