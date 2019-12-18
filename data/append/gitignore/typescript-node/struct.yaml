@@ -1,0 +1,6 @@
+description: typescript specific gitignore
+command:
+  pre: []
+  post: []
+root:
+  .gitignore: ["v1"]

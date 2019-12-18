@@ -8,5 +8,5 @@ root:
   tsconfig.json: ["v1"]
   .editorconfig: ["v1"]
   tslint.json: ["v1"]
-  .gitignore: ["v1"]
+  .gitignore: ["v1", "typescript-node"]
   README.md: ["v1"]

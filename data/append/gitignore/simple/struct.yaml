@@ -1,0 +1,6 @@
+description: basic configuration
+command:
+  pre: []
+  post: []
+root:
+  .gitignore: ["v1"]

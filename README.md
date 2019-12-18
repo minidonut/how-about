@@ -33,11 +33,9 @@ hbout <type> <target> [options]
 
 hbout --help
 
-hbout append .editorconfig
-hbout append tslint.json
+hbout append gitignore
+hbout append editorconfig
 hbout append circleci
-hbout append npm
-hbout append readme
 
 hbout typescript cli
 hbout typescript stub
