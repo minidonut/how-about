@@ -17,6 +17,7 @@ import license from "./license";
 import changelog from "./changelog";
 import codeofconduct from "./codeOfConduct";
 import contributing from "./contributing";
+import webpackconfigjs from "./webpackConfigJS";
 
 export default {
   "package.json": packageJSON,
@@ -32,4 +33,5 @@ export default {
   "CHANGELOG.md": changelog,
   "CODE_OF_CONDUCT.md": codeofconduct,
   "CONTRIBUTING.md": contributing,
+  "webpack.config.js": webpackconfigjs,
 };
