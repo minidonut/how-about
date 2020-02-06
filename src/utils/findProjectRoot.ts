@@ -18,11 +18,14 @@ export const findProjectRoot = () => {
       process.exit(1);
     }
 
-    const files = fs.readdirSync(path, { withFileTypes: true }).map(x => x.name);
+    const files = fs.readdirSync(path);
+    if (files.includes(".git")) {
+      console.log(".git directory found at", path);
+    }
     if (files.includes("package.json")) {
       console.log("package.json found at", path);
       return path;
-    } else if (files.includes(".gitignore")) {
+    } else if (files.includes(".gitignore")) {  // .git으로 변경
       console.log(".gitignore found at", path);
       return path;
     } else {
