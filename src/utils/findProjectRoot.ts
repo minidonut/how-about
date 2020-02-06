@@ -21,6 +21,7 @@ export const findProjectRoot = () => {
     const files = fs.readdirSync(path);
     if (files.includes(".git")) {
       console.log(".git directory found at", path);
+      return path;
     }
     if (files.includes("package.json")) {
       console.log("package.json found at", path);
